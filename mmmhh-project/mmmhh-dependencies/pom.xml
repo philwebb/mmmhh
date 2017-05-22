@@ -38,4 +38,10 @@
 		<main.basedir>${basedir}</main.basedir>
 		<revision>2.0.0.BUILD-SNAPSHOT</revision>
 	</properties>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>spring-repository</id>
+			<url>file://${user.home}/tmp/repo</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
