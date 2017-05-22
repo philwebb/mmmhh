@@ -1,2 +1,4 @@
 ## Experiments with Maven
 
+https://maven.apache.org/maven-ci-friendly.html
+http://www.mojohaus.org/flatten-maven-plugin/flatten-mojo.html

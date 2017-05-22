@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.mmmhh</groupId>
-	<artifactId>mmmhh-build</artifactId>
+	<artifactId>mmmhh-project</artifactId>
 	<version>2.0.0.BUILD-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Maven Makes My Head Hurt Build</name>
-	<description>Maven Makes My Head Hurt Build</description>
+	<name>Maven Makes My Head Hurt Project</name>
+	<description>Maven Makes My Head Hurt Project</description>
 	<url>http://projects.spring.io/spring-boot/</url>
 	<organization>
 		<name>Pivotal Software, Inc.</name>
@@ -36,14 +37,12 @@
 	<properties>
 		<main.basedir>${basedir}</main.basedir>
 	</properties>
-	<profiles>
-	 <profile>
-	   <id>m2e</id>
-	   <activation>
-	     <property>
-	       <name>m2e.version</name>
-	     </property>
-	   </activation>
-	 </profile>
-	</profiles>
+	<modules>
+		<module>mmmhh</module>
+		<module>mmmhh-actuator</module>
+		<module>mmmhh-autoconfigure</module>
+		<module>mmmhh-dependencies</module>
+		<module>mmmhh-parent</module>
+		<module>mmmhh-starters</module>
+	</modules>
 </project>
