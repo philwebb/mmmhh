@@ -105,8 +105,10 @@
 				<configuration>
 					<transformationSets>
 						<transformationSet>
-							<dir>${project.basedir}/.flattened-pom.xml</dir>
-							<stylesheet>src/main/xslt/post-process-flattened-pom.xslt</stylesheet>
+							<dir>${project.basedir}</dir>
+							<outputDir>${project.basedir}</outputDir>
+							<includes>.flattened-pom.xml</includes>
+							<stylesheet>src/main/xslt/post-process-flattened-pom.xsl</stylesheet>
 						</transformationSet>
 					</transformationSets>
 				</configuration>
