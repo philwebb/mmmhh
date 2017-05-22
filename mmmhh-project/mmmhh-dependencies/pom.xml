@@ -50,7 +50,7 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-framework-bom</artifactId>
-				<version>${spring.verion}</version>
+				<version>${spring.version}</version>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
@@ -87,6 +87,29 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xml-maven-plugin</artifactId>
+				<version>1.0</version>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>post-process-flattened-pom</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>transform</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<transformationSets>
+						<transformationSet>
+							<dir>${project.basedir}/.flattened-pom.xml</dir>
+							<stylesheet>src/main/xslt/post-process-flattened-pom.xslt</stylesheet>
+						</transformationSet>
+					</transformationSets>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
