@@ -35,8 +35,8 @@
 		</developer>
 	</developers>
 	<properties>
-		<main.basedir>${basedir}</main.basedir>
 		<revision>2.0.0.BUILD-SNAPSHOT</revision>
+		<main.basedir>${basedir}</main.basedir>
 		<spring.version>4.8.8.RELEASE</spring.version>
 		<hibernate.version>5.2.10.Final</hibernate.version>
 	</properties>
@@ -109,6 +109,12 @@
 							<outputDir>${project.basedir}</outputDir>
 							<includes>.flattened-pom.xml</includes>
 							<stylesheet>src/main/xslt/post-process-flattened-pom.xsl</stylesheet>
+							<outputProperties>
+								<outputProperty>
+									<name>indent</name>
+									<value>yes</value>
+								</outputProperty>
+							</outputProperties>
 						</transformationSet>
 					</transformationSets>
 				</configuration>
