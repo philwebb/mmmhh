@@ -9,10 +9,6 @@
 	<name>Maven Makes My Head Hurt Dependencies</name>
 	<description>Maven Makes My Head Hurt Dependencies</description>
 	<url>http://projects.spring.io/spring-boot/</url>
-	<organization>
-		<name>Pivotal Software, Inc.</name>
-		<url>http://www.spring.io</url>
-	</organization>
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -69,7 +65,7 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>flatten.clean</id>
+						<id>flatten-clean</id>
 						<phase>clean</phase>
 						<goals>
 							<goal>clean</goal>

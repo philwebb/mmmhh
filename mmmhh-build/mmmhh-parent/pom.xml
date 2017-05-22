@@ -6,9 +6,9 @@
 		<groupId>org.springframework.mmmhh</groupId>
 		<artifactId>mmmhh-dependencies</artifactId>
 		<version>${revision}</version>
-		<relativePath>mmmhh-dependencies</relativePath>
+		<relativePath>../mmmhh-dependencies</relativePath>
 	</parent>
-	<artifactId>mmmhh-project</artifactId>
+	<artifactId>mmmhh-parent</artifactId>
 	<packaging>pom</packaging>
 	<name>Maven Makes My Head Hurt Project</name>
 	<description>Maven Makes My Head Hurt Project</description>
@@ -42,11 +42,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<modules>
-		<module>mmmhh-dependencies</module>
-		<module>mmmhh</module>
-		<module>mmmhh-actuator</module>
-		<module>mmmhh-autoconfigure</module>
-		<module>mmmhh-starters</module>
-	</modules>
 </project>

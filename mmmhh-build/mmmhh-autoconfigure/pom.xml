@@ -4,18 +4,21 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.mmmhh</groupId>
-		<artifactId>mmmhh-project</artifactId>
+		<artifactId>mmmhh-parent</artifactId>
 		<version>${revision}</version>
+		<relativePath>../mmmhh-parent</relativePath>
 	</parent>
-	<artifactId>mmmhh-starters</artifactId>
-	<packaging>pom</packaging>
-	<name>Maven Makes My Head Hurt Starters</name>
-	<description>Maven Makes My Head Hurt Starters</description>
+	<artifactId>mmmhh-autoconfigure</artifactId>
+	<packaging>jar</packaging>
+	<name>Maven Makes My Head Hurt Autoconfigure</name>
+	<description>Maven Makes My Head Hurt Autoconfigure</description>
 	<properties>
 		<main.basedir>${basedir}</main.basedir>
 	</properties>
-	<modules>
-		<module>mmmhh-starter</module>
-		<module>mmmhh-starter-parent</module>
-	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.mmmhh</groupId>
+			<artifactId>mmmhh</artifactId>
+		</dependency>
+	</dependencies>
 </project>
