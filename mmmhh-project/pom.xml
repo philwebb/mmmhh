@@ -75,6 +75,7 @@
 		</plugins>
 	</build>
 	<modules>
+		<module>mmmhh-dependencies</module>
 		<module>mmmhh</module>
 		<module>mmmhh-actuator</module>
 		<module>mmmhh-autoconfigure</module>
