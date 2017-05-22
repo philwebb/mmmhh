@@ -8,7 +8,7 @@
 		<version>${revision}</version>
 	</parent>
 	<artifactId>mmmhh</artifactId>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<name>Maven Makes My Head Hurt</name>
 	<description>Maven Makes My Head Hurt</description>
 	<url>http://projects.spring.io/spring-boot/</url>
@@ -16,27 +16,6 @@
 		<name>Pivotal Software, Inc.</name>
 		<url>http://www.spring.io</url>
 	</organization>
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
-		</license>
-	</licenses>
-	<scm>
-		<url>https://github.com/spring-projects/spring-boot</url>
-	</scm>
-	<developers>
-		<developer>
-			<id>pwebb</id>
-			<name>Phillip Webb</name>
-			<email>pwebb@pivotal.io</email>
-			<organization>Pivotal Software, Inc.</organization>
-			<organizationUrl>http://www.spring.io</organizationUrl>
-			<roles>
-				<role>Project lead</role>
-			</roles>
-		</developer>
-	</developers>
 	<properties>
 		<main.basedir>${basedir}</main.basedir>
 	</properties>

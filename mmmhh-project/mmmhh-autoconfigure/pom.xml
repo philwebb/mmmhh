@@ -8,7 +8,7 @@
 		<version>${revision}</version>
 	</parent>
 	<artifactId>mmmhh-autoconfigure</artifactId>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<name>Maven Makes My Head Hurt Autoconfigure</name>
 	<description>Maven Makes My Head Hurt Autoconfigure</description>
 	<url>http://projects.spring.io/spring-boot/</url>
@@ -16,12 +16,6 @@
 		<name>Pivotal Software, Inc.</name>
 		<url>http://www.spring.io</url>
 	</organization>
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
-		</license>
-	</licenses>
 	<scm>
 		<url>https://github.com/spring-projects/spring-boot</url>
 	</scm>
