@@ -22,18 +22,6 @@
 	<scm>
 		<url>https://github.com/spring-projects/spring-boot</url>
 	</scm>
-	<developers>
-		<developer>
-			<id>pwebb</id>
-			<name>Phillip Webb</name>
-			<email>pwebb@pivotal.io</email>
-			<organization>Pivotal Software, Inc.</organization>
-			<organizationUrl>http://www.spring.io</organizationUrl>
-			<roles>
-				<role>Project lead</role>
-			</roles>
-		</developer>
-	</developers>
 	<properties>
 		<revision>2.0.0.BUILD-SNAPSHOT</revision>
 		<main.basedir>${basedir}</main.basedir>

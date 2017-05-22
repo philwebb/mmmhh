@@ -13,32 +13,34 @@
 	<name>Maven Makes My Head Hurt Starter Parent</name>
 	<description>Maven Makes My Head Hurt Parent</description>
 	<url>http://projects.spring.io/spring-boot/</url>
-	<organization>
-		<name>Pivotal Software, Inc.</name>
-		<url>http://www.spring.io</url>
-	</organization>
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
-		</license>
-	</licenses>
-	<scm>
-		<url>https://github.com/spring-projects/spring-boot</url>
-	</scm>
-	<developers>
-		<developer>
-			<id>pwebb</id>
-			<name>Phillip Webb</name>
-			<email>pwebb@pivotal.io</email>
-			<organization>Pivotal Software, Inc.</organization>
-			<organizationUrl>http://www.spring.io</organizationUrl>
-			<roles>
-				<role>Project lead</role>
-			</roles>
-		</developer>
-	</developers>
 	<properties>
 		<main.basedir>${basedir}</main.basedir>
 	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<inherited>true</inherited>
+				<executions>
+					<execution>
+						<id>flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+						<configuration>
+							<updatePomFile>true</updatePomFile>
+							<flattenMode>oss</flattenMode>
+							<pomElements>
+								<parent>expand</parent>
+								<distributionManagement>remove</distributionManagement>
+							</pomElements>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
