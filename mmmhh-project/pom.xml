@@ -2,9 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.springframework.mmmhh</groupId>
+	<parent>
+		<groupId>org.springframework.mmmhh</groupId>
+		<artifactId>mmmhh-dependencies</artifactId>
+		<version>${revision}</version>
+		<relativePath>mmmhh-dependencies</relativePath>
+	</parent>
 	<artifactId>mmmhh-project</artifactId>
-	<version>${revision}</version>
 	<packaging>pom</packaging>
 	<name>Maven Makes My Head Hurt Project</name>
 	<description>Maven Makes My Head Hurt Project</description>
@@ -53,8 +57,6 @@
 		<module>mmmhh</module>
 		<module>mmmhh-actuator</module>
 		<module>mmmhh-autoconfigure</module>
-		<module>mmmhh-dependencies</module>
-		<module>mmmhh-parent</module>
 		<module>mmmhh-starters</module>
 	</modules>
 </project>
