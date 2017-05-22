@@ -60,6 +60,7 @@
 							<flattenMode>oss</flattenMode>
 							<pomElements>
 								<distributionManagement>remove</distributionManagement>
+								<parent>expand</parent>
 							</pomElements>
 						</configuration>
 					</execution>
