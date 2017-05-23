@@ -27,8 +27,18 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.springframework</groupId>
+				<groupId>org.springframework.mmmhh</groupId>
 				<artifactId>mmmhh</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.mmmhh</groupId>
+				<artifactId>mmmhh-actuator</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.mmmhh</groupId>
+				<artifactId>mmmhh-autoconfigure</artifactId>
 				<version>${revision}</version>
 			</dependency>
 			<dependency>

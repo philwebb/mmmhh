@@ -1,7 +1,125 @@
-## Experiments with Maven
+## Maven Makes My Head Hurt
 
-https://maven.apache.org/maven-ci-friendly.html
-http://www.mojohaus.org/flatten-maven-plugin/flatten-mojo.html
+Experimental project to see if we can improve the Spring Boot build for Spring Boot 2.0 by
+using https://maven.apache.org/maven-ci-friendly.html[Maven's CI support].
 
+### What's wrong with the existing build
+The Spring Boot 1.5.x build works, but it's quite complicated:
 
-mmmhh-project (master) mvn -Drevision=2.0.0-BUILD-20170102.123456-1 clean deploy
+* We jump though some hoops so we can use the Bamboo release plugin
+* It's slow and we can't easily run things in parallel
+* It's hard for users to just run specific parts
+* It can't be used in a pipeline
+
+### What we'd like to do
+
+Ideally we'd like to split the Spring Boot build into three distinct parts:
+
+* The main build
+* The samples
+* The integration tests
+
+We should still make it easy for users to run the full build, but we should be able to configure our CI as three separate jobs.
+The samples and integration tests can be run in parallel downstream from the main build.
+
+We should have a nice simple release process that doesn't rely on magic Bamboo plugins.
+
+### Stable SNAPSHOT builds
+
+Splitting the samples from the main build presents some additional challenges.
+Ideally we should be able to build samples with a specific SNAPSHOT release.
+i.e. instead of building samples using `2.0.0.BUILD-SNAPSHOT` we should be able to build against `2.0.0.BUILD-20170102.123456-1`.
+
+This isn't as easy as it first appears.
+Even if we can specify that a samples should use a specific version of the `spring-boot-starter-parent` POM, the first thing that POM does is reference other Spring Boot projects in the `<dependencyManagement>` section.
+
+In other works, the published `spring-boot-starter-parent` (or more specifically `spring-boot-dependencies`) POM needs to have a `<dependencyManagement>` section that contains references in the form `2.0.0.BUILD-20170102.123456-1`
+
+### Techniques used in the sample
+
+#### Project structure
+
+The project is split into three parts.
+
+* `mmmhh-project` is the root project.
+Its job is to allow a full build from the command line and a nice Eclipse import experience.
+* `mmmhh-build` is the main project build.
+This is the project that will be the head of the CI pipeline.
+* `mmmhh-samples` are the samples.
+* `mmmhh-integration-tests` are the integration tests.
+
+#### Triggering the samples build
+
+We can't directly make `mmmhh-samples` part of the main reactor because it needs to use a plugin build during the main build.
+Instead we build samples by using the invoker plugin.
+
+In order to provide a seamless IDE import experience we can use a special IDE profile.
+This allows us to return a reactor that includes the samples.
+Even though this wouldn't work as an actual build, it does allow Eclipse to find all projects:
+
+[source,xml]
+----
+<profiles>
+  <profile>
+    <id>m2e</id>
+    <activation>
+      <property>
+        <name>m2e.version</name>
+      </property>
+    </activation>
+    <!-- Modules here --->
+  </profile>
+</profiles>
+----
+
+#### Specific SNAPSHOT revision
+
+Maven 3.5 supports https://maven.apache.org/maven-ci-friendly.html[revision properties].
+This means our projects can declare something like this:
+
+[source,xml]
+----
+<groupId>org.springframework.mmmhh</groupId>
+<version>${revision}</version>
+<artifactId>mmmhh-dependencies</artifactId>
+----
+
+We can define a property if no `revision` command line are is specified:
+
+[source,xml]
+----
+<properties>
+  <revision>2.0.0.BUILD-SNAPSHOT</revision>
+</properties>
+----
+
+We can then build from the command line in the standard way for a regular SNAPSHOT:
+
+----
+$ mvn clean install
+----
+
+Or configure CI to release a specific version:
+
+----
+$ mvn clean -Drevision=2.0.0-BUILD-20000102.123456-1 clean deploy
+----
+
+NOTE: Even though the version doesn't end in `-SNAPSHOT` Maven seems to still recognize it as one.
+This means the snapshot distribution management section is still used.
+
+#### Published POMs
+Unfortunately simply setting `-Drevision` isn't quite enough.
+We need to make sure that the published POM actually has real version numbers in it.
+For that we can use `flatten-maven-plugin` and some additional XSD (via `xml-maven-plugin`).
+
+The flatten plugin helps to create a nice clean POM file.
+It's no longer cluttered with all the extra junk that's just use during the build.
+
+We also need a bit of additional XSLT to replace the `${revision}` placeholder in the dependency management section.
+
+The flatten plugin needs slightly different configuration in `mmmhh-dependencies` and `mmmhh-parent`.
+
+#### Other items
+
+* We can probably add a `skip` install for some projects
